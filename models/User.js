@@ -6,11 +6,16 @@ const userSchema = new Schema({
   password: String,
   email: String,
   photo: String,
+  group: String,
+  palitos: {
+    type: Number,
+    default: 0
+  },
   role: {
     type: String,
     enum: ["teacher", "student"],
     default: "student"
-  }
+  }  
 }, {
   timestamps: {
     createdAt: 'created_at',
