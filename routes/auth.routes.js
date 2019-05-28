@@ -87,6 +87,7 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       email,
 
+      group: "webmad0419"
     });
 
     newUser.save()

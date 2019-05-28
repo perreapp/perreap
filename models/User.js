@@ -9,6 +9,11 @@ const userSchema = new Schema({
   lastName: String,
   photo: String,
   birthDate: String,
+  group: String,
+  palitos: {
+    type: Number,
+    default: 0
+  },
   role: {
     type: String,
     enum: ["teacher", "student"],
