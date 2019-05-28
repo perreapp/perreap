@@ -1,0 +1,63 @@
+{{!-- {{#with user}} --}}
+
+<h2>Edit your f***** profile</h2>
+
+<form action="/user/edit?user_id={{user._id}}" method="POST" id="form-container">
+
+
+  <label>Your Profile Picture</label>
+  <input type="file" name="photo">
+
+
+  <label for="username">Username</label>
+  <input id="username" type="text" name="username" value="{{user.username}}">
+
+  <br><br>
+
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" value="{{user.password}}">
+
+
+  <br><br>
+
+  <label for="firstName">First Name</label>
+  <input id="firstName" type="text" name="firstName" value="{{user.firstName}}">
+
+  <br><br>
+
+  <label for="lastName">Last Name</label>
+  <input id="lastName" type="text" name="lastName" value="{{user.lastName}}">
+
+  <br><br>
+
+  <label for="birthDate">Date of Birth</label>
+  <input id="birthDate" type="date" name="birthDate" value="{{user.birthDate}}">
+
+  <br><br>
+
+  <label for="email">Email</label>
+  <input id="email" type="text" name="email" placeholder="Your email">
+  <br>
+
+
+  {{#if message }}
+  <div class="error-message">{{ message }}</div>
+  {{/if}}
+
+  <br><br>
+
+  <button type="submit">Submit Changes</button>
+
+  {{!-- {{/with}} --}}
+
+
+
+
+
+
+
+  <p class="account-message">
+    Do you already have an account?
+    <a href="/auth/login">Login</a>
+  </p>
+</form>
