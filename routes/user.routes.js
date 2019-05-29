@@ -53,24 +53,35 @@ router.get('/dashboard', (req, res, next) => {
 //GET todos los usuarios
 router.get('/api', (req, res, next) => {
   User.find()
-    .then(users => { res.json(users) })
+    .then(users => res.json(users))
     .catch(error => console.log('¡ops! error:', error))
 });
 
 //GET un usuario
 router.get('/api/:id', (req, res, next) => {
-  User.findById(req.params.id, (err, user) => { res.json(user) })
+  User.findById(req.params.id) 
+  .then(user => res.json(user))
+  .catch(error => console.log(error))
 })
 
 //PUT un usuario
 router.put('/api/:id', (req, res, next) => {
-  User.findByIdAndUpdate(req.params.id, { $set: { palitos: req.body.value } })
-    .then(() => console.log("******************** Updated"))
+  User.findByIdAndUpdate(req.params.id, { $set: {...req.body} }, {new: true})
+    .then(updatedUser => { res.json(updatedUser) })
     .catch(err => console.log(err))
 })
 
 //DELETE un usuario
 router.delete('/api/:id', (req, res, next) => {
-  User.findByIdAndDelete(req.params.id, (err, user) => { res.json(user) })
+  User.findByIdAndDelete(req.params.id)
+  .then(user => res.json(user))
+  .catch(error => console.log(error))
 })
+
+//RULETA
+router.get('/roulette/:id', (req, res, next) => {
+  console.log(req.params.id)
+  res.render('user/roulette');
+});
+
 module.exports = router;
