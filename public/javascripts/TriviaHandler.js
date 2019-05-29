@@ -1,24 +1,33 @@
 class TriviaHandler {
   constructor (baseUrl) {
     this.BASE_URL = baseUrl;
+    this.questionElm = document.getElementById("question")
+    this.answersDiv = document.getElementById("answers")
+    this.answerButtons = document.getElementsByClassName("answer-btn")
+    this.answers = []
+    this.answersSpreaded
   }
 
   getQuestion() {
     axios.get(this.BASE_URL)
     .then(response => {
-      console.log(response.data.results[0].question)
-      console.log(response.data.results[0])
-      console.log("Cual es la correcta?", response.data.results[0].correct_answer, response.data.results[0].incorrect_answers[0], response.data.results[0].incorrect_answers[1], response.data.results[0].incorrect_answers[2])
-      // this.usersUl.innerHTML = ""
-      // response.data.forEach(user => {
-      //   if (user.group == group) {
-      //   if (user.palitos == 3) {
-      //     this.able = ""
-      //   }
-      //   const listUser = `<li id="${user._id}">Usuario ${user.username} tiene <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Atelur</button>`
-      //   this.usersUl.innerHTML += listUser
-      //   }
-      // });
+      this.questionElm.innerHTML = response.data.results[0].question
+      this.answers = [response.data.results[0].correct_answer, response.data.results[0].incorrect_answers[0], response.data.results[0].incorrect_answers[1], response.data.results[0].incorrect_answers[2]]
+      console.log("*****************", this.answers)
+      this.answersSpreaded = [...this.answers]
+      this.answersDiv.innerHTML = ""
+      while (this.answersSpreaded.length) {
+        let answer = this.answersSpreaded.splice(this.answersSpreaded.length * Math.random() | 0, 1)[0] 
+        this.answersDiv.innerHTML += `<li><button class="answer-btn">${answer}</button></li>`
+      }
+      for (let i = 0; i < this.answerButtons.length; i++) {
+        this.answerButtons[i].onclick = (e) => {
+          if (e.currentTarget.innerText == this.answers[0]) console.log("respuesta correcta!")
+          else { console.log("respuesta incorrecta") }
+        }
+      }
+
+      
     })
   }
 }

@@ -1,5 +1,5 @@
 {{!-- {{#with user}} --}}
-<p>Hello {{user.username}}, welcome to hell</p>
+<h1>Hello {{user.username}}, eres {{user.role}} welcome to hell</h1>
 
 <h2>Edit your f***** profile</h2>
 
@@ -17,14 +17,10 @@
   <input type="file" name="photo">
 
   <br><br><br>
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" value="{{user.username}}">
-
   <br><br>
 
   <label for="password">Password</label>
   <input id="password" type="password" name="password" value="{{user.password}}">
-
 
   <br><br>
 
@@ -48,7 +44,7 @@
 
   <br><br>
 
-  <label for="role">Choose Student / Teacher</label>
+  {{!-- <label for="role">Choose Student / Teacher</label>
 
   <select name="role">
     <option value="" selected="{{user.group}}">--Please choose an option--</option>
@@ -56,14 +52,16 @@
     <option value="teacher">Teacher</option>
   </select>
 
-  <br><br>
+  <br><br> --}}
 
   <label for="group">Choose your Class</label>
 
   <select name="group">
-    <option value="">--Please choose an option--</option>
-    <option value="web042019">web042019</option>
-    <option value="web062019">web062019</option>
+    <option value="">Elige un grupo para mostrar</option>
+    <option value="webmad0419">webmad0419</option>
+    <option value="webmad0619">webmad0619</option>
+    <option value="webmad0819">webmad0819</option>
+    <option value="webmad1019">webmad1019</option>  
   </select>
 
   <br><br>

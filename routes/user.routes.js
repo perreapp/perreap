@@ -38,11 +38,13 @@ router.get('/edit/:id/:message', (req, res, next) => {
 
 
 router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
-  const { username, password, lastName, firstName, email, birthDate, role } = req.body
+  // console.log(req.body)
+  console.log(req.user)
+  const { password, lastName, firstName, email, birthDate, photo } = req.body
   const id = req.params.id
-
-  console.log(req.file)
-  const photo = req.file.url
+  console.log("***************************************************", req.file)
+  if (req.file == undefined) req.body.photo = "https://media.giphy.com/media/LXtjHzZjC5WLu/giphy.gif"
+  // const photo = req.file.url
 
 
   let hashPass
@@ -54,7 +56,7 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
   else hashPass = req.user.password
 
 
-  User.findByIdAndUpdate(id, { username, password, lastName, firstName, email, photo, birthDate, role }, { new: true })
+  User.findByIdAndUpdate(id, { password, lastName, firstName, email, photo, birthDate }, { new: true })
     .then(update => {
       console.log('Your profile has been updated!', update)
       const message = "Actualizado que da gusto verlo"
@@ -72,13 +74,15 @@ router.get('/edit', (req, res, next) => {
 /* GET home page */
 router.get('/dashboard', (req, res, next) => {
 
+  console.log(req.user)
+
   console.log(req.user.role)
 
   if (req.user && req.user.role === "teacher") {
     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", req.user._id)
     res.render('user/dashboard', req.user);
   } else if (req.user && req.user.role === "student") {
-    res.redirect("/user/edit")
+    res.redirect(`/user/edit/${req.user._id}`)
   } else {
     res.redirect("/auth/login")
   }
@@ -116,7 +120,8 @@ router.delete('/api/:id', (req, res, next) => {
 //RULETA
 router.get('/roulette/:id', (req, res, next) => {
   console.log(req.params.id)
-  res.render('user/roulette');
+  console.log(req.user)
+  res.render('user/roulette', req.user);
 });
 
 module.exports = router;

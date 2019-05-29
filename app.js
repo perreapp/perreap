@@ -67,7 +67,6 @@ app.locals.title = 'Perreapp';
 // Enable authentication using session + passport
 app.use(session({
   secret: 'irongenerator',
-  cookie: { maxAge: 60000 },
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
