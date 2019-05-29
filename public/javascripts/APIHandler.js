@@ -4,6 +4,7 @@ class APIHandler {
     this.usersUl = document.getElementById('users-list')
     this.deleteButtons = document.getElementsByClassName("delete-user")
     this.updateButtons = document.getElementsByClassName("update-user")
+    this.rouletteButtons = document.getElementsByClassName("roulette-user")
     this.able = "disabled"
   }
 
@@ -13,26 +14,42 @@ class APIHandler {
       this.usersUl.innerHTML = ""
       response.data.forEach(user => {
         if (user.group == group) {
-        // console.log
-        if (user.palitos == 3) this.able = ""
-        const listUser = `<li>Usuario ${user.username} tiene <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Atelur</button>`
+        if (user.palitos == 3) {
+          this.able = ""
+        }
+        const listUser = `<li id="${user._id}">Usuario ${user.username} tiene <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Atelur</button>`
         this.usersUl.innerHTML += listUser
         }
       });
-      // console.log(response.data.role)
+      //Delete buttons
       for (let i = 0; i < this.deleteButtons.length; i++) {
         this.deleteButtons[i].onclick = function() {
           console.log(this.parentNode.parentNode.removeChild(this.parentNode))
           console.log(this.getAttribute("id"))
-          usersAPI.deleteOneUser(this.getAttribute("id"))
+          //usersAPI.deleteOneUser(this.getAttribute("id"))
+          usersAPI.updateUser(this.getAttribute("id"), "group", "undefined")
         }
       }
+      //Update buttons
       for (let i = 0; i < this.updateButtons.length; i++) {
         this.updateButtons[i].onclick = function() {
           console.log(this.parentNode.childNodes[1].value)
           console.log(this.getAttribute("id"))
-          if (this.parentNode.childNodes[1].value === 3) { this.parentNode.lastChild.removeAttribute("disabled") }
-          usersAPI.updateUser(this.getAttribute("id"), this.parentNode.childNodes[1].value)         
+          console.log(this.parentNode.lastChild)
+          if (this.parentNode.childNodes[1].value == 3) { 
+            console.log("***************************")
+            this.parentNode.lastChild.removeAttribute("disabled")
+          }
+          else this.parentNode.lastChild.setAttribute("disabled", true) 
+          usersAPI.updateUser(this.getAttribute("id"), "palitos", this.parentNode.childNodes[1].value)         
+        }
+      }
+      //Rlt buttons
+      for (let i = 0; i < this.rouletteButtons.length; i++) {
+        this.rouletteButtons[i].onclick = function() {
+          let userId = this.parentNode.getAttribute("id")
+          usersAPI.updateUser(userId, 0)
+          window.location = `/user/roulette/${userId}`          
         }
       }
     })
@@ -42,16 +59,15 @@ class APIHandler {
   deleteOneUser(id) {
     axios.delete(`${this.BASE_URL}/${id}`)
     .then(response => {
-        // console.log(response.data)
         const { _id, username } = response.data
         console.log("Borrado:", _id, username)
      })
     .catch(error => console.log('¡ops! error:', error))
   }
 
-  updateUser(id, value) { // ********************************
-    console.log("*****************", id, value)
-    const passValue = { value: value }
+  updateUser(id, field, value) { //Meter opción de poder actualizar un campo concreto
+    const passValue = {}
+    passValue[field] = value
     axios.put(`${this.BASE_URL}/${id}`, passValue)
     .then(response => {
       console.log(response)
