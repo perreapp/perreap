@@ -45,7 +45,6 @@ router.get('/edit/:id/:message', (req, res, next) => {
 
 
 router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
-<<<<<<< HEAD
   let { password, lastName, firstName, birthDate, group } = req.body
   let photo
   if (req.file) photo = req.file.url
@@ -54,15 +53,6 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
   console.log(photo)
 
   // let photo1 = req.file.url
-=======
-  // console.log(req.body)
-  console.log(req.user)
-  const { password, lastName, firstName, email, birthDate, photo } = req.body
-  const id = req.params.id
-  console.log("***************************************************", req.file)
-  if (req.file == undefined) req.body.photo = "https://media.giphy.com/media/LXtjHzZjC5WLu/giphy.gif"
-  // const photo = req.file.url
->>>>>>> 1eb734e81f47aacea8bbcc471240a139c0c2bd07
 
   User.findById(id)
     .then(oldUser => {
@@ -81,7 +71,6 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
 
       if (group === undefined) group = oldUser.group
 
-<<<<<<< HEAD
       if (!photo) photo = oldUser.photo
 
       console.log(photo)
@@ -93,13 +82,6 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
           res.redirect(`/user/edit/${update._id}/${message}`)
         })
         .catch(err => console.log('Sorry, your profile could not be updated :(', err))
-=======
-  User.findByIdAndUpdate(id, { password, lastName, firstName, email, photo, birthDate }, { new: true })
-    .then(update => {
-      console.log('Your profile has been updated!', update)
-      const message = "Actualizado que da gusto verlo"
-      res.redirect(`/user/edit/${update._id}/${message}`)
->>>>>>> 1eb734e81f47aacea8bbcc471240a139c0c2bd07
     })
 
 
