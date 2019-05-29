@@ -1,8 +1,19 @@
+<link rel="stylesheet" href="/stylesheets/main.css" type="text/css" />
+<script type="text/javascript" src="/javascripts/Winwheel.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="/javascripts/TriviaHandler.js"></script>
+<div id="trivia">
+    <p>¡Enhorabuena {{this.username}} tienes una oportunidad de poner a prueba tus conocimientos y poder librarte del castigo!</p>
+    <p>Responde a la siguiente pregunta:</p>
+    <p id="question"></p>
+    <div id="answers">
+    </div>
+</div>
 <h1>Roulette!</h1>
-        <link rel="stylesheet" href="/stylesheets/main.css" type="text/css" />
-        <script type="text/javascript" src="/javascripts/Winwheel.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-        <script src="/javascripts/TriviaHandler.js"></script>
+<div>
+    <h2>El ruleteado es {{this.username}}</h2>
+    <img src="{{this.photo}}" alt="{{this.username}}">
+</div>
         <div align="center">
             <table cellpadding="0" cellspacing="0" border="0">
             <tr>
@@ -37,6 +48,7 @@
                 </td>
             </tr>
         </table>
+    </div>
         <script>
             // Connect to trivia API
             const triviaAPI = new TriviaHandler("http://opentdb.com/api.php?amount=1")

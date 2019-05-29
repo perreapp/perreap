@@ -8,8 +8,18 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   photo: {
+<<<<<<< HEAD
     type: String,
     default: "https://media.giphy.com/media/LXtjHzZjC5WLu/giphy.gif"
+=======
+    type: String,
+    default: "https://media.giphy.com/media/LXtjHzZjC5WLu/giphy.gif"
+  },
+  birthDate: String,
+  group: { 
+    type: String,
+    default: "webmad0419" //provisional
+>>>>>>> 1eb734e81f47aacea8bbcc471240a139c0c2bd07
   },
   birthDate: String,
   group: String,
