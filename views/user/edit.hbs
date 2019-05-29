@@ -1,14 +1,22 @@
 {{!-- {{#with user}} --}}
+<p>Hello {{user.username}}, welcome to hell</p>
 
 <h2>Edit your f***** profile</h2>
 
-<form action="/user/edit?user_id={{user._id}}" method="POST" id="form-container">
+{{#if message}}
+{{message}}
+{{/if}}
+
+<form action="/user/edit/{{user._id}}" method="POST" enctype="multipart/form-data" id="form-container">
 
 
   <label>Your Profile Picture</label>
+  <br><br>
+  <img src="{{user.photo}}" alt="user picture">
+  <br><br>
   <input type="file" name="photo">
 
-
+  <br><br><br>
   <label for="username">Username</label>
   <input id="username" type="text" name="username" value="{{user.username}}">
 
@@ -37,7 +45,29 @@
 
   <label for="email">Email</label>
   <input id="email" type="text" name="email" placeholder="Your email">
-  <br>
+
+  <br><br>
+
+  <label for="role">Choose Student / Teacher</label>
+
+  <select name="role">
+    <option value="" selected="{{user.group}}">--Please choose an option--</option>
+    <option value=" student">Student</option>
+    <option value="teacher">Teacher</option>
+  </select>
+
+  <br><br>
+
+  <label for="group">Choose your Class</label>
+
+  <select name="group">
+    <option value="">--Please choose an option--</option>
+    <option value="web042019">web042019</option>
+    <option value="web062019">web062019</option>
+  </select>
+
+  <br><br>
+
 
 
   {{#if message }}

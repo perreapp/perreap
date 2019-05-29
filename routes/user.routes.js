@@ -7,24 +7,43 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
+//Edit un usuario
 
-router.get('/edit/:id', (req, res, next) => {
+router.get('/edit/:id/', (req, res, next) => {
 
   const id = req.params.id
 
   User.findById(id)
 
     .then(users => {
-      console.log(users)
       res.render('user/edit', { user: users })
     })
     .catch(error => console.log(error))
 
 })
 
-router.post('/edit', uploadCloud.single('photo'), (req, res, next) => {
-  const { username, password, lastName, firstName, email, photo, birthDate, role } = req.body
-  const id = req.params._id
+router.get('/edit/:id/:message', (req, res, next) => {
+
+  const id = req.params.id
+  const message = req.params.message
+
+  User.findById(id)
+
+    .then(users => {
+      res.render('user/edit', { user: users, message })
+    })
+    .catch(error => console.log(error))
+
+})
+
+
+router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
+  const { username, password, lastName, firstName, email, birthDate, role } = req.body
+  const id = req.params.id
+
+  console.log(req.file)
+  const photo = req.file.url
+
 
   let hashPass
 
@@ -38,17 +57,33 @@ router.post('/edit', uploadCloud.single('photo'), (req, res, next) => {
   User.findByIdAndUpdate(id, { username, password, lastName, firstName, email, photo, birthDate, role }, { new: true })
     .then(update => {
       console.log('Your profile has been updated!', update)
-      res.redirect('/')
+      const message = "Actualizado que da gusto verlo"
+      res.redirect(`/user/edit/${update._id}/${message}`)
     })
     .catch(err => console.log('Sorry, your profile could not be updated :(', err))
 
 })
 
+router.get('/edit', (req, res, next) => {
+  res.render('user/edit');
+});
+
 
 /* GET home page */
 router.get('/dashboard', (req, res, next) => {
-  res.render('user/dashboard');
-});
+
+  console.log(req.user.role)
+
+  if (req.user && req.user.role === "teacher") {
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", req.user._id)
+    res.render('user/dashboard', req.user);
+  } else if (req.user && req.user.role === "student") {
+    res.redirect("/user/edit")
+  } else {
+    res.redirect("/auth/login")
+  }
+
+})
 
 //GET todos los usuarios
 router.get('/api', (req, res, next) => {

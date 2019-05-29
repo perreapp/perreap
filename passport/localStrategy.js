@@ -22,7 +22,6 @@ passport.use(new LocalStrategy({
           done(null, false, { message: 'Incorrect password' });
           return;
         }
-
         done(null, foundUser);
       })
       .catch(err => done(err));

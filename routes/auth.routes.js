@@ -15,7 +15,14 @@ router.get("/login", (req, res, next) => {
 
 router.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
-    if (user) res.redirect(`/user/edit/${user.id}`)
+    if (err) {
+      console.log(err);
+    }
+    if (user) {
+      req.logIn(user, (err) => {
+        res.redirect(`/user/edit/${user.id}`)
+      })
+    }
     else res.redirect("/auth/login")
   })(req, res, next);
 });
@@ -43,10 +50,10 @@ const checkRole = role => {
 }
 
 const isTeacher = (req, res) => {
-  if (req.user.role === "Teacher") return true
+  if (req.user.role === "teacher") return true
 }
 const isStudent = req => {
-  if (req.user.role === 'Student') return true
+  if (req.user.role === 'student') return true
 }
 
 
@@ -58,7 +65,9 @@ router.get("/signup", (req, res, next) => {
 
 
 router.post("/signup", (req, res, next) => {
-  const { username, password, email } = req.body
+  const { username, password, email, role } = req.body
+
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", req.body)
 
   // const username = req.body.username;
   // const password = req.body.password;
@@ -86,25 +95,24 @@ router.post("/signup", (req, res, next) => {
       username,
       password: hashPass,
       email,
-
-      group: "webmad0419"
+      role,
     });
 
     newUser.save()
-      .then(() => {
-        res.redirect("user/edit");
+      .then(user => {
+        res.redirect(`/user/edit/${user._id}`);
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });
       })
   });
-  req.login(user, (err) => {
-    if (err) {
-      next(err)
-    } else {
-      res.redirect("/login");
-    }
-  })
+  // req.login(user, (err) => {
+  //   if (err) {
+  //     next(err)
+  //   } else {
+  //     res.redirect("/login");
+  //   }
+  // })
 });
 
 router.get("/logout", (req, res) => {
