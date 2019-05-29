@@ -65,22 +65,22 @@ router.get("/signup", (req, res, next) => {
 
 
 router.post("/signup", (req, res, next) => {
-  const { username, password, email, role } = req.body
+  const { username, password, role } = req.body
 
   console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", req.body)
 
   // const username = req.body.username;
   // const password = req.body.password;
   // const email = req.body.email
-  if (username === "" || password === "" || email === "") {
+  if (username === "" || password === "") {
     res.render("auth/signup", { message: "Please input username, password and email" });
     return;
   }
 
-  if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
-    res.render("auth/signup", { message: "You have entered an invalid email address!" })
-    return
-  }
+  // if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+  //   res.render("auth/signup", { message: "You have entered an invalid email address!" })
+  //   return
+  // }
 
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
@@ -94,7 +94,6 @@ router.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      email,
       role,
     });
 

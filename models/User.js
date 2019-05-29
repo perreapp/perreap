@@ -7,13 +7,13 @@ const userSchema = new Schema({
   email: String,
   firstName: String,
   lastName: String,
-  photo: String,
-  birthDate: String,
-  group: {
+  photo: {
     type: String,
-    enum: ["web042019", "web062019", "web082019"],
-    default: "web042019"
+    default: "https://media.giphy.com/media/LXtjHzZjC5WLu/giphy.gif"
   },
+  birthDate: String,
+  group: String,
+
   palitos: {
     type: Number,
     default: 0

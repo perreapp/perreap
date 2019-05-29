@@ -1,0 +1,38 @@
+/* nav{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	z-index: 3;
+	
+	ol{
+		padding: 20px;
+		
+		li{
+			display: inline-block;
+			list-style: none;
+			
+			background-color: fade(white, 20%);
+			
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			
+			text-align: center;
+			line-height: 40px;
+			margin: 0 10px;
+			
+			color: @prim;
+			font-size: 20px;
+			font-weight: 200;
+			
+			transition-duration: 1s;
+			transition-timing-function: cubic-bezier(.8,0,.3,1);
+			
+			&.active{
+				-webkit-transform: scale(1.2, 1.2);
+				background-color: white;
+			}
+		}
+  } */
