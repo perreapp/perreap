@@ -10,6 +10,20 @@ const bcryptSalt = 10;
 //Edit un usuario
 
 router.get('/edit/:id/', (req, res, next) => {
+  // console.log(req.user)
+  // console.log(req.params.id)
+  if (req.user._id == req.params.id) {
+    const id = req.params.id
+    User.findById(id)
+
+    .then(users => {
+      res.render('user/edit', { user: users })
+    })
+    .catch(error => console.log(error))
+  }
+  else {
+    res.redirect("auth/login")
+  }
 
   // if (req.user && req.user._id === req.params.id) {
 
@@ -18,14 +32,14 @@ router.get('/edit/:id/', (req, res, next) => {
   //   res.redirect("/auth/login")
   // }
 
-  const id = req.params.id
+  // const id = req.params.id
 
-  User.findById(id)
+  // User.findById(id)
 
-    .then(users => {
-      res.render('user/edit', { user: users })
-    })
-    .catch(error => console.log(error))
+  //   .then(users => {
+  //     res.render('user/edit', { user: users })
+  //   })
+  //   .catch(error => console.log(error))
 
 })
 
@@ -45,6 +59,8 @@ router.get('/edit/:id/:message', (req, res, next) => {
 
 
 router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
+
+  
   let { password, lastName, firstName, birthDate, group } = req.body
   let photo
   if (req.file) photo = req.file.url
@@ -89,27 +105,20 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
 
 })
 
-router.get('/edit', (req, res, next) => {
-  res.render('user/edit');
-});
+// router.get('/edit', (req, res, next) => {
+//   res.render('user/edit');
+// });
 
 
 /* GET home page */
 router.get('/dashboard', (req, res, next) => {
-
-  console.log(req.user)
-
-  console.log(req.user.role)
-
   if (req.user && req.user.role === "teacher") {
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", req.user._id)
     res.render('user/dashboard', req.user);
   } else if (req.user && req.user.role === "student") {
     res.redirect(`/user/edit/${req.user._id}`)
   } else {
     res.redirect("/auth/login")
   }
-
 })
 
 //GET todos los usuarios

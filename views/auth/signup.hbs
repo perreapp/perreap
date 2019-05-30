@@ -1,41 +1,41 @@
-<h2>Signup</h2>
+<a href="/">Home</a>
+<div class="center-container">
+  <div>
+  <h2>Signup</h2>
 
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+  <form action="/auth/signup" method="POST" id="form-container">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username" placeholder="JonSnow">
 
-  <br><br>
+    <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password" placeholder="Your password">
+    <br>
 
+    <br><br>
 
-  <br><br>
+    <label for="role">Choose Student / Teacher</label>
 
-  {{!-- <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="Your email">
-  <br> --}}
-
-  <label for="role">Choose Student / Teacher</label>
-
-  <select name="role">
-    <option value="">--Please choose an option--</option>
-    <option value="student">Student</option>
-    <option value="teacher">Teacher</option>
-  </select>
+    <select name="role">
+      <option value="">--Please choose an option--</option>
+      <option value="student">Student</option>
+      <option value="teacher">Teacher</option>
+    </select>
 
 
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+    {{#if message }}
+    <div class="error-message">{{ message }}</div>
+    {{/if}}
 
-  <br><br>
+    <br><br>
 
-  <button>Create account</button>
-</form>
+    <button>Create account</button>
+  </form>
 
-<p class="account-message">
-  Do you already have an account?
-  <a href="/auth/login">Login</a>
-</p>
+  <p class="account-message">
+    Do you already have an account?
+    <a href="/auth/login">Login</a>
+  </p>
+  </div>
+</div>
