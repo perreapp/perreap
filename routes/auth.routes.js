@@ -99,19 +99,19 @@ router.post("/signup", (req, res, next) => {
 
     newUser.save()
       .then(user => {
-        res.redirect(`/user/edit/${user._id}`);
+        req.login(user, (err) => {
+          if (err) {
+            next(err)
+          } else {
+            res.redirect(`/user/edit/${user._id}`);
+          }
+        })
+
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });
       })
   });
-  // req.login(user, (err) => {
-  //   if (err) {
-  //     next(err)
-  //   } else {
-  //     res.redirect("/login");
-  //   }
-  // })
 });
 
 router.get("/logout", (req, res) => {

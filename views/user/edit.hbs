@@ -1,7 +1,6 @@
 {{!-- {{#with user}} --}}
-<h1>Hello {{user.username}}, eres {{user.role}} welcome to hell</h1>
 
-<h2>Edit your f***** profile</h2>
+{{!-- <h2>Edit your f***** profile</h2>
 
 {{#if message}}
 {{message}}
@@ -38,7 +37,7 @@
 
   <br><br>
 
-  <label for="group">Choose your Class</label>
+
 
   <select name="group">
     <option value="">Elige un grupo para mostrar</option>
@@ -63,4 +62,77 @@
     Do you already have an account?
     <a href="/auth/login">Login</a>
   </p>
-</form>
+</form> --}}
+
+
+<div class="main-w3layouts wrapper">
+
+  <div class="main-agileinfo">
+    <div class="agileits-top">
+      <p>Hello {{user.username}}, eres {{user.role}} welcome to hell</p>
+      <form action="/user/edit/{{user._id}}" method="POST" enctype="multipart/form-data" id="form-container">
+
+
+
+        <img src="{{user.photo}}" alt="user picture" height="auto" width="270px">
+
+        {{!-- <label class="text">Your Profile Picture</label> --}}
+        <input class="changeHide" type="file" name="photo">
+        <label for="file">Sube una foto</label>
+
+
+        <br><br>
+        <input id="firstName" class="text" type="text" name="firstName" placeholder="First Name"
+          value="{{user.firstName}}" required="">
+        <input id="lastName" class="text" type="text" name="lastName" placeholder="Last Name" value="{{user.lastName}}"
+          required="">
+
+        <br>
+
+        <label for="password">Your Password</label>
+        <input id="password" class="text email" type="password" name="password" placeholder="Password"
+          value="{{user.password}}" required="">
+        <label for="birthDate">Date of Birth</label>
+        <input id="birthDate" class="text" type="date" name="birthDate" value="{{user.birthDate}}"
+          placeholder="Date of Birth" value="{{user.birthDate}}">
+
+
+
+        <label for="group">Choose your Class</label>
+
+        <select class="text" name="group">
+          <option value="">Elige un grupo para mostrar</option>
+          <option value="webmad0419">webmad0419</option>
+          <option value="webmad0619">webmad0619</option>
+          <option value="webmad0819">webmad0819</option>
+          <option value="webmad1019">webmad1019</option>
+        </select>
+
+        <div class="wthree-text">
+
+          <div class="clear"> </div>
+        </div>
+        <input type="submit" value="SUBMIT">
+
+        {{#if message }}
+        <div class="error-message">{{ message }}</div>
+        {{/if}}
+
+      </form>
+      <p>Don't have an Account? <a href="/auth/login"> Login Now!</a></p>
+    </div>
+  </div>
+
+  <ul class="colorlib-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>

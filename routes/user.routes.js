@@ -97,12 +97,10 @@ router.get('/edit', (req, res, next) => {
 /* GET home page */
 router.get('/dashboard', (req, res, next) => {
 
-  console.log(req.user)
 
-  console.log(req.user.role)
 
   if (req.user && req.user.role === "teacher") {
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", req.user._id)
+
     res.render('user/dashboard', req.user);
   } else if (req.user && req.user.role === "student") {
     res.redirect(`/user/edit/${req.user._id}`)

@@ -1,5 +1,4 @@
-
-<h2>Login</h2>
+{{!-- <h2>Login</h2>
 
 <form action="/auth/login" method="POST" id="form-container">
   <label for="username">Username</label>
@@ -22,4 +21,47 @@
     Don't have an account yet?
     <a href="/auth/signup">Signup</a>
   </p>
-</form>
+</form> --}}
+
+
+<div class="main-w3layouts wrapper">
+  <h1>Login to Hell</h1>
+  <div class="main-agileinfo">
+    <div class="agileits-top">
+      <form action="/auth/login" method="POST" id="form-container">
+
+
+        <input id="username" class="text" type="text" name="username" placeholder="Username" required="">
+        <input id="password" class="text email" type="password" name="password" placeholder="Password" required="">
+
+
+
+
+        <div class="wthree-text">
+
+          <div class="clear"> </div>
+        </div>
+        <input type="submit" value="LOGIN">
+
+        {{#if message }}
+        <div class="error-message">{{ message }}</div>
+        {{/if}}
+
+      </form>
+      <p>Don't have an Account? <a href="/auth/login"> Signup Now!</a></p>
+    </div>
+  </div>
+
+  <ul class="colorlib-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
