@@ -1,31 +1,29 @@
 {{!-- <h2>Signup</h2>
 
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+  <form action="/auth/signup" method="POST" id="form-container">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username" placeholder="JonSnow">
 
-  <br><br>
+    <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password" placeholder="Your password">
+    <br>
 
+    <br><br>
 
-  <br><br>
-
-
-  <label for="role">Choose Student / Teacher</label>
-
-  <select name="role">
-    <option value="">--Please choose an option--</option>
-    <option value="student">Student</option>
-    <option value="teacher">Teacher</option>
-  </select>
+    <label for="role">Choose Student / Teacher</label>
 
 
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+
+    {{#if message }}
+    <div class="error-message">{{ message }}</div>
+    {{/if}}
+
+    <br><br>
+
+    <button>Create account</button>
+  </form>
 
   <br><br>
 

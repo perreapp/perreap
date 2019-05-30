@@ -20,6 +20,11 @@ router.post('/login', function (req, res, next) {
     }
     if (user) {
       req.logIn(user, (err) => {
+        if (err) {
+          console.log(err);
+          next(err);
+          return
+        }
         res.redirect(`/user/edit/${user.id}`)
       })
     }
@@ -106,12 +111,12 @@ router.post("/signup", (req, res, next) => {
             res.redirect(`/user/edit/${user._id}`);
           }
         })
-
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });
       })
   });
+
 });
 
 router.get("/logout", (req, res) => {
