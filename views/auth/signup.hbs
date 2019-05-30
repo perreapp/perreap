@@ -44,11 +44,12 @@
       <form action="/auth/signup" method="POST" id="form-container">
         <input id="username" class="text" type="text" name="username" placeholder="Username" required="">
         <input id="password" class="text email" type="password" name="password" placeholder="Password" required="">
-        <input type="radio" id="student" name="role" value="student">
-        <label for="student">Student</label>
-        <input type="radio" id="teacher" name="role" value="teacher">
-        <label for="teacher">Teacher</label>
-
+        <div class="toggle">
+          <input type="radio" id="student" name="role" value="student">
+          <label for="student">Student</label>
+          <input type="radio" id="teacher" name="role" value="teacher">
+          <label for="teacher">Teacher</label>
+        </div>
         {{!-- <label for="role">Choose Student / Teacher</label>
         <select class="text" name="role">
           <option class="text" value="">Please choose an option</option>
