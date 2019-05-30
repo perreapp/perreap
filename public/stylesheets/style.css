@@ -6,9 +6,28 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font: inherit;
   vertical-align: baseline; }
 
+#placeNav {
+  padding: 0;
+  width: 800px;
+  margin-right: 0; }
+
+#placeNav li {
+  display: inline-block; }
+
 .button {
   width: 200px !important;
   height: 80px;
+  border: solid #f3e7a0 !important;
+  text-align: center !important;
+  margin: 20px; }
+
+.imgNav {
+  width: auto;
+  height: 100px; }
+
+.buttonNav {
+  width: 100px !important;
+  height: 60px;
   border: solid #f3e7a0 !important;
   text-align: center !important;
   margin: 20px; }
