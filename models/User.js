@@ -23,7 +23,9 @@ const userSchema = new Schema({
     enum: ["teacher", "student"],
     default: "student"
   }
-}, {
+},
+
+  {
     timestamps: {
       createdAt: 'created_at',
       updatedAt: 'updated_at'
