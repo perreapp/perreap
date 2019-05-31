@@ -1,13 +1,38 @@
 <link rel="stylesheet" href="/stylesheets/style.css" />
+<link rel="stylesheet" href="/stylesheets/dashboard.css" />
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Orbitron:700|Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 
-<h1>Dashboard</h1>
 
-<h2>Lista de usuarios</h2>
+
+
+
+
+
+
+<div class="navigation">
+
+  <img class="imgNav" src="/images/logoPerreApp.png" alt="Logo Image">
+
+  <ul>
+    <li>
+      <p>Hello {{this.username}}, Welcome to Hell</p>
+    </li>
+    <li><a href="/user/edit/{{this._id}}"><input type="button" value="Edit Profile"></a></li>
+    <li><a href="/auth/logout"><input type="button" value="Logout"></a></li>
+  </ul>
+
+</div>
+
+
+
+
+
+
+
 
 <div id="users">
-  {{!-- <form action="">
-    <input type="search" placeholder="Busca un alumno..."><button>Añadir</button>
-  </form> --}}
 
 
 
@@ -19,13 +44,31 @@
     <option value="webmad0819">webmad0819</option>
     <option value="webmad1019">webmad1019</option>
   </select>
+
   <ul id="users-list">
 
   </ul>
+
 </div>
 
 
-<a href="/user/edit/{{this._id}}">Edit Profile</a>
+
+
+
+
+<ul class="colorlib-bubbles">
+  {{!-- <img src="https://media.giphy.com/media/LXtjHzZjC5WLu/giphy.gif" alt=""> --}}
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
 
 {{!-- <ul id="options">
   <li class="new option">
@@ -38,3 +81,45 @@
 <br>
 <input type="reset">
 <button title="Save items in list">Save</button><input type="checkbox" name="chkUpdateListItems"><label for="chkUpdateListItems">Update list items to reflect new names?</label> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <form action="">
+    <input type="search" placeholder="Busca un alumno..."><button>Añadir</button>
+  </form> --}}
+
+
+
+{{!-- 
+<img class="imgNav" src="/images/logoPerreApp.png" alt="Logo Image">
+
+
+<div id="navCont">
+
+
+  <ul id="placeNav" class="ulNav">
+    <li>Hello {{this.username}}, Welcome to Hell</li>
+    <li class="liNav"><a href="/user/edit/{{this._id}}"><input type="button" value="Edit Profile"></a></li>
+    <li class="liNav"><a href="/auth/logout"><input type="button" value="Logout"></a></li>
+  </ul>
+  <h1>Dashboard</h1>
+
+  <h2>Lista de usuarios</h2>
+
+
+{{!-- <img class="imgNav" src="/images/logoPerreApp.png" alt="Logo Image"> --}}
