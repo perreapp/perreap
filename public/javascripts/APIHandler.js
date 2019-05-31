@@ -17,7 +17,7 @@ class APIHandler {
               this.able = ""
             }
             // <img src="${user.photo}" alt="${user.name}"><p>${user.firstName} ${user.lastName} (${user.username})</p>
-            const listUser = `<li id="${user._id}"><img src="${user.photo}" alt="${user.name}"><p> ${user.firstName} ${user.lastName} (${user.username}) palitos:</p> <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Atelur</button>`
+            const listUser = `<li id="${user._id}"><img src="${user.photo}" alt="${user.name}"><p> ${user.firstName} ${user.lastName} (${user.username}) palitos:</p> <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Ruleta</button>`
             this.usersUl.innerHTML += listUser
           }
         });
