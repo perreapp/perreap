@@ -13,7 +13,6 @@ const userSchema = new Schema({
   },
   birthDate: String,
   group: String,
-
   palitos: {
     type: Number,
     default: 0

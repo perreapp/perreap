@@ -12,8 +12,8 @@
 
 
 <div class="navigation">
-
-    <img class="imgNav" src="/images/logoPerreApp.png" alt="Logo Image">
+    <a href="/user/dashboard"><img class="imgNav" src="/images/logoPerreApp.png" alt="Logo Image"></a>
+    
 
     <ul>
         <li>
@@ -125,7 +125,8 @@
     // Invitar a aperitivos en Ironbeers APERITIVOS
 
     //Connect to trivia API
-    const triviaAPI = new TriviaHandler("http://opentdb.com/api.php?amount=1")
+    //const triviaAPI = new TriviaHandler("http://opentdb.com/api.php?amount=1")
+    const triviaAPI = new TriviaHandler("https://opentdb.com/api.php?amount=1&category=9&difficulty=hard&type=multiple")
     // Create new wheel object specifying the parameters at creation time.
     let theWheel = new Winwheel({
         'outerRadius': 212,        // Set outer radius so wheel fits inside the background.
@@ -177,7 +178,7 @@
                 { 'fillStyle': '#00aef0', 'text': 'CREEPY' },
                 { 'fillStyle': '#ffffff', 'text': 'LA MACARENA', 'textFontSize': 16 },
                 { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
-                { 'fillStyle': '#e20f0f', 'text': 'VENGANZA', },
+                { 'fillStyle': '#e20f0f', 'text': 'LLAMADA REAL', 'textFontSize': 14 },
                 { 'fillStyle': '#3cb878', 'text': 'LA CROQUETA', 'textFontSize': 16 },
                 { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#e20f0f', 'text': 'EL MONO', 'textFillStyle': '#ffffff' },
@@ -188,7 +189,7 @@
         'animation':           // Specify the animation to use.
         {
             'type': 'spinToStop',
-            'duration': 1,    // Duration in seconds.
+            'duration': 10,    // Duration in seconds.
             'spins': 3,     // Default number of complete spins.
             'callbackFinished': alertPrize,
             'callbackSound': playSound,   // Function to call when the tick sound is to be triggered.

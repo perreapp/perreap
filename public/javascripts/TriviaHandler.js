@@ -88,8 +88,8 @@ class TriviaHandler {
       case "LA MACARENA":
         triviaAPI.postPunishment("Bailar la Macarena en una de las mesas communes")
         break;
-      case "VENGANZA":
-        triviaAPI.postPunishment("¡¡¡Venganza!!!")
+      case "LLAMADA REAL":
+        triviaAPI.postPunishment("Llamar a Ironhack en nombre de la Casa Real y decir que Froilán está interesado en un Bootcamp de Data")
         break;
       case "LA CROQUETA":
         triviaAPI.postPunishment("Hacer la croqueta de un lado a otro de la clase")
