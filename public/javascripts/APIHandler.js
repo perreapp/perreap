@@ -7,7 +7,6 @@ class APIHandler {
     this.rouletteButtons = document.getElementsByClassName("roulette-user")
     this.able = "disabled"
   }
-
   getFullList(group) {
     axios.get(this.BASE_URL)
     .then(response => {
@@ -16,8 +15,9 @@ class APIHandler {
         if (user.group == group) {
         if (user.palitos == 3) {
           this.able = ""
-        }
-        const listUser = `<li id="${user._id}">Usuario ${user.username} tiene <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Atelur</button>`
+        } 
+        // <img src="${user.photo}" alt="${user.name}"><p>${user.firstName} ${user.lastName} (${user.username})</p>
+        const listUser = `<li id="${user._id}"><img src="${user.photo}" alt="${user.name}"><p> ${user.username} palitos:</p> <input type="text" placeholder="${user.palitos}"> <button id="${user._id}" class="update-user">Actualizar</button><button id="${user._id}" class="delete-user")>Eliminar</button><button class="roulette-user" ${this.able}>Atelur</button>`
         this.usersUl.innerHTML += listUser
         }
       });
@@ -33,15 +33,15 @@ class APIHandler {
       //Update buttons
       for (let i = 0; i < this.updateButtons.length; i++) {
         this.updateButtons[i].onclick = function() {
-          console.log(this.parentNode.childNodes[1].value)
+          console.log(this.parentNode.childNodes[3].value)
           console.log(this.getAttribute("id"))
           console.log(this.parentNode.lastChild)
-          if (this.parentNode.childNodes[1].value == 3) { 
+          if (this.parentNode.childNodes[3].value == 3) { 
             console.log("***************************")
             this.parentNode.lastChild.removeAttribute("disabled")
           }
           else this.parentNode.lastChild.setAttribute("disabled", true) 
-          usersAPI.updateUser(this.getAttribute("id"), "palitos", this.parentNode.childNodes[1].value)         
+          usersAPI.updateUser(this.getAttribute("id"), "palitos", this.parentNode.childNodes[3].value)         
         }
       }
       //Rlt buttons
@@ -76,51 +76,4 @@ class APIHandler {
       })
     .catch(error => console.log('¡ops! error:', error))
   }
-
-
-  //////////////////////////////////////////////////////////////////////////////
-  // clearAll() {
-  //   this.charactersDiv.innerHTML = ""
-  // }
-
-  // getOneRegister(searchCharacterID) {
-
-  //   axios.get(`${this.BASE_URL}/${searchCharacterID}`)
-  //   .then(response => {
-  //     console.log(response.data)
-  //       const { id, name, occupation, weapon, cartoon } = response.data
-  //       this.name.innerHTML = name
-  //       this.occupation.innerHTML = occupation
-  //       this.weapon.innerHTML = weapon
-  //       this.cartoon.innerHTML = cartoon
-  //   })
-  //   .catch(error => console.log('¡ops! error:', error))
-  // }
-
-  // createOneRegister(character) {
-  //   axios.post(this.BASE_URL, character)
-  //   .then(response => {
-  //       const { id, name, occupation, weapon, cartoon } = response.data
-  //       console.log("Created:", id, name, occupation, weapon, cartoon)
-  //   })
-  //   .catch(error => console.log('¡ops! error:', error))
-  // }
-
-  // updateOneRegister(updatedCharacter) {
-  //   axios.put(`${this.BASE_URL}/${updatedCharacter.id}`, updatedCharacter)
-  //       .then(response => {
-  //           const { id, name, occupation, weapon, cartoon } = response.data
-  //           console.log("Updated:", id, name, occupation, weapon, cartoon)
-  //        })
-  //       .catch(error => console.log('¡ops! error:', error))
-  // }
-
-  // deleteOneRegister(deleteCharacterID) {
-  //   axios.delete(`${this.BASE_URL}/${deleteCharacterID}`)
-  //   .then(response => {
-  //       const { id, name, occupation, weapon, cartoon } = response.data
-  //       console.log("Borrado:", id, name, occupation, weapon, cartoon)
-  //    })
-  //   .catch(error => console.log('¡ops! error:', error))
-  // }
 }

@@ -10,8 +10,6 @@ const bcryptSalt = 10;
 //Edit un usuario
 
 router.get('/edit/:id/', (req, res, next) => {
-  // console.log(req.user)
-  // console.log(req.params.id)
   if (req.user._id == req.params.id) {
     const id = req.params.id
     User.findById(id)
@@ -99,16 +97,7 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
         })
         .catch(err => console.log('Sorry, your profile could not be updated :(', err))
     })
-
-
-  // .catch(err => console.log('Sorry, your profile could not be updated :(', err))
-
 })
-
-// router.get('/edit', (req, res, next) => {
-//   res.render('user/edit');
-// });
-
 
 /* GET home page */
 router.get('/dashboard', (req, res, next) => {
@@ -152,8 +141,8 @@ router.delete('/api/:id', (req, res, next) => {
 //RULETA
 router.get('/roulette/:id', (req, res, next) => {
   console.log(req.params.id)
-  console.log(req.user)
-  res.render('user/roulette', req.user);
+  User.findById(req.params.id)
+  .then(user => res.render("user/roulette", user))
+  .catch(error => console.log(error))
 });
-
 module.exports = router;

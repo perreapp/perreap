@@ -4,7 +4,8 @@ class TriviaHandler {
     this.questionElm = document.getElementById("question")
     this.answersDiv = document.getElementById("answers")
     this.msgElm = document.getElementById("msg")
-    this.answerButtons = document.getElementsByClassName("answer-btn")    
+    this.answerButtons = document.getElementsByClassName("answer-btn")
+    this.triviaDiv = document.getElementById("trivia")    
     this.answers = []
     this.answersSpreaded
   }
@@ -25,11 +26,23 @@ class TriviaHandler {
       }
       for (let i = 0; i < this.answerButtons.length; i++) {
         this.answerButtons[i].onclick = (e) => {
-          if (e.currentTarget.innerText == this.answers[0]) console.log("respuesta correcta!")
-          else { console.log("respuesta incorrecta") }
+          if (e.currentTarget.innerText == this.answers[0]) triviaAPI.correctAnswer()//console.log("respuesta correcta!")
+          else { triviaAPI.incorrectAnswer() }  //console.log("respuesta incorrecta")
         }
       }
     })
+  }
+  correctAnswer() {
+    this.answersDiv.innerHTML = ""
+    this.msgElm.innerHTML = ""
+    this.questionElm.innerHTML = ""
+    this.msgElm.innerHTML = "<p>¡Respuesta correcta!</p>"
+  }
+  incorrectAnswer() {
+    this.answersDiv.innerHTML = ""
+    this.msgElm.innerHTML = ""
+    this.questionElm.innerHTML = ""
+    this.msgElm.innerHTML = "<p>¡Ooh respuesta incorrecta!</p>"
   }
   getPunishment(punishment) {
     switch (punishment) {
@@ -94,29 +107,9 @@ class TriviaHandler {
   }
   postPunishment(description) {
     this.answersDiv.innerHTML = ""
+    this.msgElm.innerHTML = ""
+    this.questionElm.innerHTML = ""
     this.answersDiv.innerHTML = "<p>Tienes que:</p>"
     this.answersDiv.innerHTML += `<p>${description}</p>`
   }
 }
-
-
-   // Lista de perreos
-      // Traer desayuno al día siguiente DESAYUNO
-      // Perrear al Dr. Vicario PERREO
-      // Cantar en el clase de Web CANTAR
-      // Pregunta en Data si han visto a tu perro de manera desesperada ¿Y TU PERRO?
-      // Pegar un post-it a alguien de Data con tu número POST-IT
-      // Perrear a Fabio durante 30 secs PERREO
-      // Brindar por tu futura boda en las gradas de Ironhack BODA
-      // Lo que elija la clase CLASE
-      // Llamar a un familiar y decirle que estás embarazad@ EMBARAZO
-      // Confesarle tu amor a Alvaro Cotelo por Slack CONFESIÓN DE AMOR
-      // Nota “te espero en el baño en 5 min” a la persona que digan los TA ¿QUEDAMOS?
-      // Quedarte mirando 30 secs por el cristal de web con cara de creepy CREEPY
-      // Bailar la Macarena en una de las mesas communes LA MACARENA
-      // Venganza VENGANZA
-      // Hacer la croqueta de un lado a otro de la clase LA CROQUETA
-      // Imitar a un mono loco y excitado EL MONO
-      // Mandar una foto sexy a Soni y preguntarle si vale para LinkedIn FOTO SEXY
-      // Preguntar a Dani sit e puede hacer algo por programación PREGUNTAR A DANI
-      // Invitar a aperitivos en Ironbeers APERITIVOS
