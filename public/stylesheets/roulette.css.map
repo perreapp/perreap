@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "roulette.css",
+	"sources": [
+		"roulette.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,OAAO;EACnB,+BAA+B;EAC/B,UAAU,EAAE,iDAAiD;EAC7D,UAAU,EAAE,8CAA8C;EAC1D,UAAU,EAAE,4CAA4C;EACxD,UAAU,EAAE,yCAAyC;EACrD,eAAe,EAAE,KAAK;EACtB,qBAAqB,EAAE,KAAK;EAC5B,WAAW,EAAE,oBAAoB,GAClC"
+}

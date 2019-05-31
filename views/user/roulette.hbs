@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="/stylesheets/main.css" type="text/css" />
+<link rel="stylesheet" href="/stylesheets/roulette.css" />
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+{{!-- <link rel="stylesheet" href="/stylesheets/style.css" /> --}}
 <script type="text/javascript" src="/javascripts/Winwheel.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script type="text/javascript" src="/javascripts/TweenMax.min.js"></script>
+
+{{!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> --}}
 <script src="/javascripts/TriviaHandler.js"></script>
 
 
@@ -24,21 +30,30 @@
 
 
 
-<div class="center-container">
+{{!-- <div class="center-container">
     <div id="trivia">
         <p>¡Enhorabuena {{this.username}}!</p>
         <p id="msg"></p>
-        {{!-- <img src="{{this.photo}}" alt="{{this.username}}"> --}}
+       
         <p id="question"></p>
         <div id="answers">
         </div>
     </div>
-</div>
-<div class="container">
+</div> --}}
+{{!-- <div class="container"> --}}
+<div class="rlt-container">
     <div class="row">
         <div class="rlt-col col-md-6">
-            <h2>El ruleteado es {{this.username}}</h2>
-            <img src="{{this.photo}}" alt="{{this.username}}">
+            <h1>El ruleteado es {{this.firstName}} {{this.lastName}} ({{this.username}})</h1>
+            <img class="user-photo" src="{{this.photo}}" alt="{{this.username}}">
+            <div id="trivia">
+                <p>¡Enhorabuena {{this.username}}, es hora de ruletear!</p>
+                <p id="msg"></p>
+                {{!-- <img src="{{this.photo}}" alt="{{this.username}}"> --}}
+                <p id="question"></p>
+                <div id="answers">
+                </div>
+            </div>
         </div>
         <div class="rlt-col col-md-6">
             <div align="center">
@@ -53,13 +68,17 @@
                                         <th align="center">Power</th>
                                     </tr>
                                     <tr>
-                                        <td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td>
+                                        <td><button id="pw3" onClick="powerSelected(3)">A todo poder</button></td>
+
+                                        {{!-- <td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td> --}}
                                     </tr>
                                     <tr>
-                                        <td align="center" id="pw2" onClick="powerSelected(2);">Med</td>
+                                        <td><button id="pw2" onClick="powerSelected(2)">Fuerte</button></td>
+                                        {{!-- <td align="center" id="pw2" onClick="powerSelected(2);">Med</td> --}}
                                     </tr>
                                     <tr>
-                                        <td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
+                                        <td><button id="pw1" onClick="powerSelected(1)">Despacito</button></td>
+                                        {{!-- <td align="center" id="pw1" onClick="powerSelected(1);">Low</td> --}}
                                     </tr>
                                 </table>
                                 <br />
@@ -81,6 +100,7 @@
         </div>
     </div>
 </div>
+{{!-- </div> --}}
 <script>
 
     // Lista de perreos
@@ -140,27 +160,27 @@
                 // {'fillStyle' : '#fff200', 'text' : 'TRIVIA'},
                 // {'fillStyle' : '#00aef0', 'text' : 'TRIVIA'},
                 // {'fillStyle' : '#ffffff', 'text' : 'TRIVIA', 'textFontSize' : 12}
-                { 'fillStyle': '#ee1c24', 'text': 'TRIVIA' },
+                { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#3cb878', 'text': 'DESAYUNO' },
                 { 'fillStyle': '#f6989d', 'text': 'PERREO' },
                 { 'fillStyle': '#00aef0', 'text': 'CANTAR' },
                 { 'fillStyle': '#f26522', 'text': '¿Y TU PERRO?', 'textFontSize': 16 },
-                { 'fillStyle': '#000000', 'text': 'POST-IT', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
+                { 'fillStyle': '#e20f0f', 'text': 'POST-IT', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#e70697', 'text': 'PERREO' },
-                { 'fillStyle': '#fff200', 'text': 'TRIVIA' },
+                { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#f6989d', 'text': 'BODA' },
-                { 'fillStyle': '#ee1c24', 'text': 'LA CLASE', 'textFontSize': 16 },
+                { 'fillStyle': '#e20f0f', 'text': 'LA CLASE', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#3cb878', 'text': 'EMBARAZO' },
                 { 'fillStyle': '#f26522', 'text': 'CONFIESA', 'textFontSize': 16 },
-                { 'fillStyle': '#a186be', 'text': 'TRIVIA' },
+                { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#fff200', 'text': '¿QUEDAMOS?', 'textFontSize': 16 },
                 { 'fillStyle': '#00aef0', 'text': 'CREEPY' },
-                { 'fillStyle': '#ee1c24', 'text': 'LA MACARENA', 'textFontSize': 16 },
-                { 'fillStyle': '#f6989d', 'text': 'TRIVIA' },
-                { 'fillStyle': '#f26522', 'text': 'VENGANZA' },
+                { 'fillStyle': '#ffffff', 'text': 'LA MACARENA', 'textFontSize': 16 },
+                { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
+                { 'fillStyle': '#e20f0f', 'text': 'VENGANZA', },
                 { 'fillStyle': '#3cb878', 'text': 'LA CROQUETA', 'textFontSize': 16 },
-                { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
-                { 'fillStyle': '#a186be', 'text': 'EL MONO' },
+                { 'fillStyle': '#000000', 'text': 'TRIVIA', 'textFillStyle': '#ffffff' },
+                { 'fillStyle': '#e20f0f', 'text': 'EL MONO', 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#fff200', 'text': 'FOTO SEXY' },
                 { 'fillStyle': '#00aef0', 'text': 'PREGUNTAR', 'textFontSize': 16 },
                 { 'fillStyle': '#ffffff', 'text': 'APERITIVOS' }

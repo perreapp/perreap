@@ -5,7 +5,24 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font: inherit;
   vertical-align: baseline;
 }
+.select-group {
+  padding: 1em 0;
+}
 
+.profile-pic {
+  text-align: center;
+}
+
+.profile-pic img {
+  width: 250px;  
+}
+.upload-pic {
+  display: inline-block;
+}
+.file-input {
+  display: inline-block;
+  padding: 1em;
+}
 .btn {
   font-size: .9em;
   color: #fff;
@@ -99,6 +116,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   width: auto;
   height: 100px;
   margin-right: 50px;
+  margin: 20px;
+}
+
+.imgNav2 {
+  width: auto;
+  height: 200px;
+  margin-right: 50px;
+  margin: 20px;
 }
 
 .buttonNav {
@@ -249,12 +274,12 @@ h1 {
 
 /*-- main --*/
 .main-w3layouts {
-  padding: 3em 0 1em;
+  padding: 0em 0 1em;
 }
 
 .main-agileinfo {
   width: 35%;
-  margin: 3em auto;
+  margin: 0em auto;
   background: rgba(0, 0, 0, 0.18);
   background-size: cover;
 }
@@ -267,7 +292,7 @@ input[type="text"], input[type="email"], input[type="password"] {
   font-size: 0.9em;
   color: #fff;
   font-weight: 100;
-  width: 94.5%;
+  width: 100%;
   display: block;
   border: none;
   padding: 0.8em;
@@ -284,7 +309,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 input.email, input.text.w3lpass {
-  margin: 2em 0;
+  margin: 0em 0;
 }
 
 .text:focus, .text:valid {
@@ -650,7 +675,7 @@ input.checkbox:checked:after {
 /*-- responsive-design --*/
 @media(max-width:1440px) {
   input[type="text"], input[type="email"], input[type="password"] {
-    width: 94%;
+    width: 100%;
   }
 }
 
@@ -661,6 +686,9 @@ input.checkbox:checked:after {
 
   .agileits-top {
     padding: 2.5em;
+
+    text-align: center;
+
   }
 
   .main-agileinfo {
@@ -706,7 +734,7 @@ input.checkbox:checked:after {
   }
 
   input[type="text"], input[type="email"], input[type="password"] {
-    width: 93%;
+    width: 100%
   }
 }
 
