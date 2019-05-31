@@ -1,36 +1,36 @@
 class TriviaHandler {
-  constructor (baseUrl) {
+  constructor(baseUrl) {
     this.BASE_URL = baseUrl;
     this.questionElm = document.getElementById("question")
     this.answersDiv = document.getElementById("answers")
     this.msgElm = document.getElementById("msg")
     this.answerButtons = document.getElementsByClassName("answer-btn")
-    this.triviaDiv = document.getElementById("trivia")    
+    this.triviaDiv = document.getElementById("trivia")
     this.answers = []
     this.answersSpreaded
   }
 
   getQuestion() {
     axios.get(this.BASE_URL)
-    .then(response => {
-      console.log(response)
-      this.answersDiv.innerHTML = ""
-      this.msgElm.innerHTML = "<p>Tienes una oportunidad de poner a prueba tus conocimientos y poder librarte del castigo!</p>"
-      this.questionElm.innerHTML = response.data.results[0].question
-      this.answers = [response.data.results[0].correct_answer, response.data.results[0].incorrect_answers[0], response.data.results[0].incorrect_answers[1], response.data.results[0].incorrect_answers[2]]
-      console.log("*****************", this.answers)
-      this.answersSpreaded = [...this.answers]
-      while (this.answersSpreaded.length) {
-        let answer = this.answersSpreaded.splice(this.answersSpreaded.length * Math.random() | 0, 1)[0] 
-        this.answersDiv.innerHTML += `<li><button class="answer-btn">${answer}</button></li>`
-      }
-      for (let i = 0; i < this.answerButtons.length; i++) {
-        this.answerButtons[i].onclick = (e) => {
-          if (e.currentTarget.innerText == this.answers[0]) triviaAPI.correctAnswer()//console.log("respuesta correcta!")
-          else { triviaAPI.incorrectAnswer() }  //console.log("respuesta incorrecta")
+      .then(response => {
+        console.log(response)
+        this.answersDiv.innerHTML = ""
+        this.msgElm.innerHTML = "<p>Tienes una oportunidad de poner a prueba tus conocimientos y poder librarte del castigo!</p>"
+        this.questionElm.innerHTML = response.data.results[0].question
+        this.answers = [response.data.results[0].correct_answer, response.data.results[0].incorrect_answers[0], response.data.results[0].incorrect_answers[1], response.data.results[0].incorrect_answers[2]]
+        console.log("*****************", this.answers)
+        this.answersSpreaded = [...this.answers]
+        while (this.answersSpreaded.length) {
+          let answer = this.answersSpreaded.splice(this.answersSpreaded.length * Math.random() | 0, 1)[0]
+          this.answersDiv.innerHTML += `<li><button class="answer-btn">${answer}</button></li>`
         }
-      }
-    })
+        for (let i = 0; i < this.answerButtons.length; i++) {
+          this.answerButtons[i].onclick = (e) => {
+            if (e.currentTarget.innerText == this.answers[0]) triviaAPI.correctAnswer()//console.log("respuesta correcta!")
+            else { triviaAPI.incorrectAnswer() }  //console.log("respuesta incorrecta")
+          }
+        }
+      })
   }
   correctAnswer() {
     this.answersDiv.innerHTML = ""
@@ -52,8 +52,8 @@ class TriviaHandler {
       case "DESAYUNO":
         triviaAPI.postPunishment("Traer desayuno al día siguiente")
         break;
-      case "PERREO":
-        triviaAPI.postPunishment("Perrear al Dr. Vicario")
+      case "AMOR":
+        triviaAPI.postPunishment("Declarar tu amor de rodillas a Antonella o Victor en la zona común")
         break;
       case "CANTAR":
         triviaAPI.postPunishment("Cantar en el clase de Web")
@@ -76,8 +76,8 @@ class TriviaHandler {
       case "EMBARAZO":
         triviaAPI.postPunishment("Llamar a un familiar y decirle que estás embarazad@")
         break;
-      case "CONFIESA":
-        triviaAPI.postPunishment("Confesarle tu amor a Alvaro Cotelo por Slack")
+      case "CAFE":
+        triviaAPI.postPunishment("Comprar un café y delante de oficina de staff, gritar este café es una m*****")
         break;
       case "¿QUEDAMOS?":
         triviaAPI.postPunishment("Poner una nota “te espero en el baño en 5 min” a la persona que digan los TA")
@@ -100,8 +100,8 @@ class TriviaHandler {
       case "FOTO SEXY":
         triviaAPI.postPunishment("Mandar una foto sexy a Soni y preguntarle si vale para LinkedIn")
         break;
-      case "PREGUNTAR":
-        triviaAPI.postPunishment("Preguntar a Dani si te puede hacer algo por programación")
+      case "CORRER":
+        triviaAPI.postPunishment("Correr 3 vueltas por dentro haciendo movimientos de calentamiento")
         break;
     }
   }
